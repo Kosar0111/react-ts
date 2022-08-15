@@ -1,6 +1,6 @@
-export interface IPosts {
+export interface IPost {
   id: string;
   author: string;
   description: string;
-  time: number;
+  time: string;
 }

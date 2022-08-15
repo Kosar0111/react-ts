@@ -1,18 +1,66 @@
-import React from "react";
-import Posts from "./component/Posts";
+import React, { useState } from "react";
+import { savePost } from "./store/postSlice";
+import { useAppDispatch, useAppSelector } from "./hooks/hooks";
+import ListPosts from "./component/ListPosts";
 import "./App.css";
+import { useFormik, FormikProps } from "formik";
+import validationSchema from "./helpers/validation";
 
-const App = () => {
+interface FormModel {
+  author: string;
+  description: string;
+}
+
+const App: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const onSubmit = (values: FormModel) => {
+    dispatch(savePost(values));
+    formik.resetForm();
+  };
+  const formik: FormikProps<FormModel> = useFormik<FormModel>({
+    initialValues: {
+      author: "",
+      description: "",
+    },
+    onSubmit,
+    validationSchema,
+  });
+
+  /*const addPost = value => {
+    dispatch(savePost(value));
+  };*/
+
   return (
     <>
-      <form className="form">
+      <form className="form" onSubmit={formik.handleSubmit}>
         <label className="form__author">Title</label>
-        <input className="author" type="text" />
+        <input
+          className="author"
+          placeholder="New author"
+          type="text"
+          onBlur={formik.handleBlur}
+          value={formik.values.author}
+          onChange={formik.handleChange}
+        />
+        {formik.errors.author && (
+          <div className="error">{formik.errors.author}</div>
+        )}
         <label className="form__discription">Description</label>
-        <textarea className="description" maxLength={250}></textarea>
-        <button className="form__btn">Submit</button>
+        <textarea
+          className="description"
+          maxLength={250}
+          placeholder="New description"
+          value={formik.values.description}
+          onChange={formik.handleChange}
+        ></textarea>
+        {formik.errors.description && (
+          <div className="error">{formik.errors.description}</div>
+        )}
+        <button type="submit" className="form__btn" disabled={!formik.isValid}>
+          Submit
+        </button>
       </form>
-      <Posts />
+      <ListPosts />
     </>
   );
 };
