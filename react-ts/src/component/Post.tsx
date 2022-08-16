@@ -11,9 +11,9 @@ const Post: React.FC<IPostProps> = props => {
     <div className="post">
       <img className="img" src={user} alt="user" />
       <div className="content">
-        <span>{author}</span>
-        <span>{description}</span>
-        <span>{time}</span>
+        <div className="content__author">Author:{author}</div>
+        <div className="content__comment">Commeny:{description}</div>
+        <div className="content__time">{time}</div>
       </div>
     </div>
   );

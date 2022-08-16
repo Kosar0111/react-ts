@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IPost } from "../models/models";
 import { v4 as uuidv4 } from "uuid";
-import { ObjectType } from "typescript";
-
 interface PostSlice {
   loading: boolean;
   error: string;
@@ -16,21 +14,21 @@ const initialState: PostSlice = {
   posts: [],
 };
 
-interface IActionPayload {
+type ActionPayload = {
   author: string;
   description: string;
-}
+};
 
 const postSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    savePost(state, action: PayloadAction<IActionPayload>) {
+    savePost: (state, action: PayloadAction<ActionPayload>) => {
       state.posts.push({
         id: uuidv4(),
         author: action.payload.author.trim(),
         description: action.payload.description.trim(),
-        time: new Date().toString(),
+        time: new Date().toLocaleString(),
       });
     },
   },

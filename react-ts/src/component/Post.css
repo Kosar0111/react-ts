@@ -1,4 +1,8 @@
+.content {
+  width: 100%;
+}
 .post {
+  display: flex;
   margin: 15px auto;
   width: 70%;
   background-color: grey;
@@ -8,7 +12,18 @@
   padding: 10px;
 }
 
-.post {
-  width: 15px;
-  height: 15px;
+.img {
+  display: inline;
+  width: 25px;
+  height: 25px;
+  padding-right: 20px;
+}
+.content__author,
+.content__comment {
+  padding-bottom: 5px;
+}
+.content__time {
+  font-size: 0.75rem;
+  text-align: right;
+  margin-top: 10px;
 }

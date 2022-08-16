@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { savePost } from "./store/postSlice";
-import { useAppDispatch, useAppSelector } from "./hooks/hooks";
+import { useAppDispatch } from "./hooks/hooks";
 import ListPosts from "./component/ListPosts";
 import "./App.css";
 import { useFormik, FormikProps } from "formik";
 import validationSchema from "./helpers/validation";
 
-interface FormModel {
+type FormModel = {
   author: string;
   description: string;
-}
+};
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -26,10 +26,6 @@ const App: React.FC = () => {
     validationSchema,
   });
 
-  /*const addPost = value => {
-    dispatch(savePost(value));
-  };*/
-
   return (
     <>
       <form className="form" onSubmit={formik.handleSubmit}>
@@ -37,6 +33,7 @@ const App: React.FC = () => {
         <input
           className="author"
           placeholder="New author"
+          name="author"
           type="text"
           onBlur={formik.handleBlur}
           value={formik.values.author}
@@ -50,6 +47,7 @@ const App: React.FC = () => {
           className="description"
           maxLength={250}
           placeholder="New description"
+          name="description"
           value={formik.values.description}
           onChange={formik.handleChange}
         ></textarea>

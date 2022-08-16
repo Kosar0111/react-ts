@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { type } from "os";
 import postSlice from "./postSlice";
 
 export const store = configureStore({
