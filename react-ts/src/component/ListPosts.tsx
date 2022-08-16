@@ -1,11 +1,9 @@
-import { log } from "console";
-import React from "react";
+import React, { FC } from "react";
 import { useAppSelector } from "../hooks/hooks";
 import Post from "./Post";
 
-const ListPosts = () => {
+const ListPosts: FC = () => {
   const posts = useAppSelector(state => state.posts.posts);
-  console.log(posts);
 
   return (
     <div>

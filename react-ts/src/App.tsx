@@ -1,10 +1,11 @@
-import React from "react";
-import { savePost } from "./store/postSlice";
-import { useAppDispatch } from "./hooks/hooks";
+import React, { useEffect } from "react";
+import { getPosts, addPost } from "./store/postSlice";
+import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import ListPosts from "./component/ListPosts";
 import "./App.css";
 import { useFormik, FormikProps } from "formik";
 import validationSchema from "./helpers/validation";
+import load from "./img/loading.gif";
 
 type FormModel = {
   author: string;
@@ -13,8 +14,9 @@ type FormModel = {
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector(state => state.posts);
   const onSubmit = (values: FormModel) => {
-    dispatch(savePost(values));
+    dispatch(addPost(values));
     formik.resetForm();
   };
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
@@ -25,6 +27,10 @@ const App: React.FC = () => {
     onSubmit,
     validationSchema,
   });
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
 
   return (
     <>
@@ -58,7 +64,12 @@ const App: React.FC = () => {
           Submit
         </button>
       </form>
-      <ListPosts />
+      {error && <h2 className="error-api">An error occured: {error}</h2>}
+      {loading ? (
+        <img className="load" src={load} alt="loading" />
+      ) : (
+        <ListPosts />
+      )}
     </>
   );
 };

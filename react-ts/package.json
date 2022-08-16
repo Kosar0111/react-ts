@@ -12,6 +12,7 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
+    "concurrently": "^7.3.0",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,10 +24,12 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "server": "json-server -w server/db.json -p 3001",
+    "dev": "concurrently \"npm run start\" \"npm run server\" "
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +50,8 @@
     ]
   },
   "devDependencies": {
-    "@types/uuid": "^8.3.4"
+    "@types/uuid": "^8.3.4",
+    "concurrently": "^7.3.0",
+    "json-server": "^0.17.0"
   }
 }

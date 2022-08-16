@@ -2,7 +2,7 @@
   text-align: center;
 }
 .form {
-  width: 70%;
+  width: 72%;
   height: 40%;
   margin: 50px auto;
   background-color: grey;
@@ -58,4 +58,16 @@
   margin: 10px 15px;
   color: red;
   font-size: 1rem;
+}
+.error-api {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
+.load {
+  display: flex;
+  margin: 0 auto;
+  height: 20%;
+  width: 20%;
 }
