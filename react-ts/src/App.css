@@ -3,8 +3,8 @@
 }
 .form {
   width: 72%;
-  height: 40%;
-  margin: 50px auto;
+  height: 30%;
+  margin: 35px auto;
   background-color: grey;
   border: 2px solid red;
   border-radius: 5px;
@@ -12,12 +12,12 @@
 }
 .form__author {
   display: block;
-  margin: 10px 15px;
+  margin: 5px 15px;
 }
 
 .author {
   display: block;
-  margin: 20px;
+  margin: 10px auto;
   height: 40px;
   width: 90%;
   border-radius: 15px;

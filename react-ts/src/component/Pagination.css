@@ -1,0 +1,41 @@
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid grey;
+    border-radius: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.page-link{
+    text-decoration: none;
+    color: red;
+}
+
+.page-item:hover{
+    text-decoration: none;
+    color: grey;
+    border: none;
+    background: grey;
+    box-shadow: 3px 3px;
+}
+
+.page-link:active{
+    text-decoration: none;
+    color: grey;
+    border: none;
+    background: grey;
+    box-shadow: 3px 3px;
+}

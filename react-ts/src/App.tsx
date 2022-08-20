@@ -9,6 +9,7 @@ import './App.css'
 import validationSchema from './helpers/validation'
 import load from './img/loading.gif'
 
+
 type FormModel = {
   author: string
   description: string
@@ -17,10 +18,12 @@ type FormModel = {
 const App: React.FC = () => {
   const dispatch = useAppDispatch()
   const { loading, error } = useAppSelector(state => state.posts)
+  
   const onSubmit = (values: FormModel) => {
     dispatch(addPost(values))
     formik.resetForm()
   }
+  
   const formik: FormikProps<FormModel> = useFormik<FormModel>({
     initialValues: {
       author: '',
