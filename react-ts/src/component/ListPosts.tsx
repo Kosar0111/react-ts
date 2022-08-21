@@ -14,6 +14,8 @@ const ListPosts: FC = () => {
   const indexOfLastPage = currentPage * postPerPage
   const indexOfFirstPage = indexOfLastPage - postPerPage
   const currentPosts = posts.slice(indexOfFirstPage, indexOfLastPage)
+  const howManyPages = Math.ceil(total/postPerPage)
+
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
@@ -23,6 +25,7 @@ const ListPosts: FC = () => {
         <Post key={post.id} {...post} />
       ))} 
       <Pagination 
+        pages={howManyPages}
         postPerPage={postPerPage} 
         total={total}
         paginate={paginate}
