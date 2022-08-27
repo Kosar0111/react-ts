@@ -1,0 +1,30 @@
+.content {
+  width: 100%;
+}
+.post {
+  display: flex;
+  margin: 15px auto;
+  width: 70%;
+  background-color: grey;
+  border: 2px solid red;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.img {
+  display: inline;
+  width: 25px;
+  height: 25px;
+  padding-right: 20px;
+}
+.content__author,
+.content__comment {
+  padding-bottom: 5px;
+}
+.content__time {
+  font-size: 0.75rem;
+  text-align: right;
+  margin-top: 10px;
+}
