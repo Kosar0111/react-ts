@@ -17,7 +17,6 @@ const Pagination: FC<PaginetionProps> = ({ total, postPerPage, paginate }) => {
 
   const [currentButton, setCurrentButton] = useState(1)
   const [arrOfCurrentButtons, setArrOfCurrentButton] = useState<number[]>([])
-  console.log(arrOfCurrentButtons)
 
   useEffect(() => {
     let templeNumberPages: number[] = [...arrOfCurrentButtons]
